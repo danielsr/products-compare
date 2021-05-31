@@ -9,6 +9,7 @@
     "clean-dist": "rimraf dist/*",
     "lint": "eslint './src/**/*.{js,ts,tsx}' --quiet",
     "start": "webpack serve --config=configs/webpack/dev.js",
+    "proxy": "node ./proxy/index.js",
     "test": "jest --coverage --watchAll --config=configs/jest.json"
   },
   "devDependencies": {
@@ -17,6 +18,7 @@
     "@babel/preset-env": "^7.14.4",
     "@babel/preset-react": "^7.13.13",
     "@babel/preset-typescript": "^7.13.0",
+    "@types/axios": "^0.14.0",
     "@types/jest": "^26.0.23",
     "@types/react": "^17.0.8",
     "@types/react-dom": "^17.0.5",
@@ -24,6 +26,7 @@
     "@typescript-eslint/eslint-plugin": "^4.25.0",
     "@typescript-eslint/parser": "^4.25.0",
     "babel-loader": "^8.2.2",
+    "cors-anywhere": "^0.4.4",
     "css-loader": "^5.2.6",
     "eslint": "^7.27.0",
     "eslint-config-prettier": "^8.3.0",
@@ -45,6 +48,11 @@
     "webpack-merge": "^5.7.3"
   },
   "dependencies": {
+    "axios": "^0.21.1",
     "styled-components": "^5.3.0"
-  }
+  },
+  "browserslist": [
+    "defaults",
+    "not IE 11"
+  ]
 }
