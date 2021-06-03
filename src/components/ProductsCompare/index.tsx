@@ -7,7 +7,7 @@ import {
   CompareTableColumns,
   CompareTableColumn,
   CompareTableColumnHeader,
-  CompareTableCell,
+  QualityLabel,
 } from "./styled";
 import FeatureLabels from "./FeatureLabels";
 import ProductsSelect from "./ProductsSelect";
@@ -27,7 +27,7 @@ const ProductsComparison: FC = () => {
         <CompareTableColumn>
           <CompareTableColumnHeader>
             <ProductsSelect products={products} />
-            <CompareTableCell>Keurmerk</CompareTableCell>
+            <QualityLabel>Keurmerk</QualityLabel>
           </CompareTableColumnHeader>
           <FeatureLabels features={features} />
         </CompareTableColumn>
