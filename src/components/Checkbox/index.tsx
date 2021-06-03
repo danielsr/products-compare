@@ -1,17 +1,10 @@
 import React, { FC } from "react";
-import styled from "styled-components";
+import { Input, Label, Wrapper } from "./styled";
 
 type PropType = {
   name: string;
   label: string;
 };
-
-const Wrapper = styled.div`
-  display: flex;
-  gap: 10px;
-`;
-const Label = styled.label``;
-const Input = styled.input``;
 
 const Checkbox: FC<PropType> = ({ name, label }: PropType) => {
   return (
