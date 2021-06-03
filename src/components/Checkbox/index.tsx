@@ -18,7 +18,7 @@ type PropType = {
 const Checkbox: FC<PropType> = ({ name, label }: PropType) => {
   return (
     <Wrapper>
-      <Input type="checkbox" name={name} />
+      <Input type="checkbox" id={name} name={name} />
       <Label htmlFor={name}>{label}</Label>
     </Wrapper>
   );

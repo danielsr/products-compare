@@ -4,7 +4,6 @@ import { Product } from "../../types";
 import Checkbox from "../Checkbox";
 
 const Wrapper = styled.div`
-  padding: 20px 20px 0 0;
   display: flex;
   flex-direction: column;
   gap: 10px;
@@ -18,7 +17,11 @@ const ProductsSelect: FC<PropType> = ({ products }: PropType) => {
   return (
     <Wrapper>
       {products?.map(({ name, sku }) => (
-        <Checkbox key={sku} name={sku} label={name} />
+        <Checkbox
+          key={`Checkbox_Product_${sku}`}
+          name={`Checkbox_Product_${sku}`}
+          label={name}
+        />
       ))}
     </Wrapper>
   );
