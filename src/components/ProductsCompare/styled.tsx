@@ -1,44 +1,40 @@
 import styled from "styled-components";
 
-export const Wrapper = styled.div``;
-
-export const Title = styled.h1`
-  font-size: 2rem;
-  color: #0000ff;
-`;
-
-export const Table = styled.div`
+export const CompareTable = styled.div`
   display: flex;
   border-top: 1px solid #ccc;
   border-bottom: 2px solid #0000ff;
   padding-bottom: 20px;
 `;
 
-export const Column = styled.div`
+export const CompareTableColumn = styled.div`
   border-right: 1px solid #ccc;
   width: 250px;
   min-width: 250px;
 `;
 
-export const ColumnHeader = styled.div`
+export const CompareTableColumnHeader = styled.div`
   height: 400px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 `;
 
-export const Cell = styled.div`
+export const CompareTableCell = styled.div`
   display: flex;
   align-items: center;
   border-top: 1px solid #ccc;
   height: 30px;
 `;
 
-export const Products = styled.div`
+export const CompareTableColumns = styled.div`
   display: flex;
   overflow-x: auto;
 `;
 
-export const ProductsSelect = styled.div`
-  padding: 20px 20px 0 0;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
+export const Wrapper = styled.div``;
+
+export const Title = styled.h1`
+  font-size: 2rem;
+  color: #0000ff;
 `;

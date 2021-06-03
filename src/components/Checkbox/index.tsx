@@ -1,5 +1,14 @@
 import React, { FC } from "react";
-import { Input, Label, Wrapper } from "./styled";
+import styled from "styled-components";
+
+const Wrapper = styled.div`
+  display: flex;
+  gap: 10px;
+`;
+
+const Label = styled.label``;
+
+const Input = styled.input``;
 
 type PropType = {
   name: string;

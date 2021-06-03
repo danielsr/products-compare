@@ -1,16 +1,17 @@
 import React, { FC, useEffect } from "react";
 import { useProducts } from "../../hooks/useProducts";
-import Checkbox from "../Checkbox";
 import {
-  Cell,
-  Column,
-  ColumnHeader,
-  Products,
-  ProductsSelect,
-  Table,
-  Title,
   Wrapper,
+  Title,
+  CompareTable,
+  CompareTableColumns,
+  CompareTableColumn,
+  CompareTableColumnHeader,
+  CompareTableCell,
 } from "./styled";
+import FeatureLabels from "./FeatureLabels";
+import ProductsSelect from "./ProductsSelect";
+import ProductColumn from "./ProductColumn";
 
 const ProductsComparison: FC = () => {
   const { fetchProducts, products, features } = useProducts();
@@ -22,32 +23,24 @@ const ProductsComparison: FC = () => {
   return (
     <Wrapper>
       <Title>Compare Products</Title>
-      <Table>
-        <Column>
-          <ColumnHeader>
-            <ProductsSelect>
-              {products?.map(({ name, sku }) => (
-                <Checkbox key={sku} name={sku} label={name} />
-              ))}
-            </ProductsSelect>
-          </ColumnHeader>
-          {features.map((feature, idx) => (
-            <Cell key={`FeatureLabel_${idx}`}>{feature}</Cell>
-          ))}
-        </Column>
-        <Products>
+      <CompareTable>
+        <CompareTableColumn>
+          <CompareTableColumnHeader>
+            <ProductsSelect products={products} />
+            <CompareTableCell>Keurmerk</CompareTableCell>
+          </CompareTableColumnHeader>
+          <FeatureLabels features={features} />
+        </CompareTableColumn>
+        <CompareTableColumns>
           {products?.map((product) => (
-            <Column key={product.sku}>
-              <ColumnHeader />
-              {features.map((feature, idx) => (
-                <Cell key={`ProductFeature_${product.sku}_${idx}`}>
-                  {product[feature]}
-                </Cell>
-              ))}
-            </Column>
+            <ProductColumn
+              key={product.sku}
+              product={product}
+              features={features}
+            />
           ))}
-        </Products>
-      </Table>
+        </CompareTableColumns>
+      </CompareTable>
     </Wrapper>
   );
 };
