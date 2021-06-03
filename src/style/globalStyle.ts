@@ -7,7 +7,8 @@ const GlobalStyle = createGlobalStyle`
 
   html {
     scroll-behavior: smooth;
-    font-size: 16px;
+    font-size: 14px;
+    font-family: 'Roboto', sans-serif;
   }
 
   body {
