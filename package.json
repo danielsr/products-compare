@@ -1,7 +1,7 @@
 {
-  "name": "products-comparison",
+  "name": "products-compare",
   "version": "0.0.1",
-  "description": "Products Comparison",
+  "description": "Products Compare",
   "author": "Daniel Rodrigues",
   "license": "MIT",
   "scripts": {
