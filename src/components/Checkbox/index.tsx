@@ -6,7 +6,9 @@ const Wrapper = styled.div`
   gap: 10px;
 `;
 
-const Label = styled.label``;
+const Label = styled.label`
+  font-weight: 500;
+`;
 
 const Input = styled.input``;
 

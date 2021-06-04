@@ -1,6 +1,6 @@
 import React, { FC } from "react";
 import styled from "styled-components";
-import { Product } from "../../types";
+import { Product, ProductFeature } from "../../types";
 import {
   CompareTableCell,
   CompareTableColumn,
@@ -13,11 +13,24 @@ const Image = styled.img`
   margin-top: 50px;
 `;
 
-const Name = styled.h4``;
+const Name = styled.h4`
+  color: #0050bc;
+`;
 
-const Price = styled.span``;
+const Price = styled.div`
+  display: flex;
+  flex-direction: column;
+`;
 
-const PricePer = styled.span``;
+const PriceValue = styled.span`
+  font-size: 1.2rem;
+  font-weight: 600;
+`;
+
+const PricePer = styled.span`
+  color: #ccc;
+  font-size: 0.9rem;
+`;
 
 const Badges = styled.div`
   display: flex;
@@ -38,7 +51,7 @@ const Badge = styled.img`
 
 type PropType = {
   product: Product;
-  features: string[];
+  features: ProductFeature[];
 };
 
 const ProductColumn: FC<PropType> = ({ product, features }: PropType) => {
@@ -47,8 +60,10 @@ const ProductColumn: FC<PropType> = ({ product, features }: PropType) => {
       <CompareTableColumnHeader>
         <Image src={product.productImage} alt={product.name} />
         <Name>{product.name}</Name>
-        <Price>{product.salePrice}</Price>
-        <PricePer>per stuk / excl. btw</PricePer>
+        <Price>
+          <PriceValue>{product.salePrice}</PriceValue>
+          <PricePer>per stuk / excl. btw</PricePer>
+        </Price>
         <Divider />
         <Badges>
           {product.badges.split("|").map((badge, idx) => (
@@ -56,10 +71,13 @@ const ProductColumn: FC<PropType> = ({ product, features }: PropType) => {
           ))}
         </Badges>
       </CompareTableColumnHeader>
-
       {features.map((feature, idx) => (
-        <CompareTableCell key={`ProductFeature_${product.sku}_${idx}`}>
-          {product[feature]}
+        <CompareTableCell
+          highlight={feature.highlight}
+          bold
+          key={`ProductFeature_${product.sku}_${idx}`}
+        >
+          {product[feature.name]}
         </CompareTableCell>
       ))}
     </CompareTableColumn>

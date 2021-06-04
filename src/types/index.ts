@@ -5,3 +5,8 @@ export type Product = {
   salePrice: string;
   badges: string;
 };
+
+export type ProductFeature = {
+  name: string;
+  highlight: boolean;
+};
