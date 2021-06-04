@@ -1,13 +1,16 @@
 import React from "react";
 import { hot } from "react-hot-loader";
-import ProductsCompare from "./components/ProductsCompare";
 import GlobalStyle from "./style/globalStyle";
+import ProductsCompare from "./components/ProductsCompare";
+import Container from "./elements/Container";
 
 const App: React.FC = () => {
   return (
     <>
       <GlobalStyle />
-      <ProductsCompare />
+      <Container>
+        <ProductsCompare />
+      </Container>
     </>
   );
 };
