@@ -11,9 +11,15 @@ const Wrapper = styled.div`
 
 type PropType = {
   products: Product[];
+  value: string[];
+  onChange: (value: string[]) => void;
 };
 
-const ProductsSelect: FC<PropType> = ({ products }: PropType) => {
+const ProductsSelect: FC<PropType> = ({
+  products,
+  value,
+  onChange,
+}: PropType) => {
   return (
     <Wrapper>
       {products?.map(({ name, sku }) => (
@@ -21,6 +27,12 @@ const ProductsSelect: FC<PropType> = ({ products }: PropType) => {
           key={`Checkbox_Product_${sku}`}
           name={`Checkbox_Product_${sku}`}
           label={name}
+          checked={value.includes(sku)}
+          onChange={(checked) =>
+            checked
+              ? onChange([...value, sku])
+              : onChange(value.filter((item) => item !== sku))
+          }
         />
       ))}
     </Wrapper>

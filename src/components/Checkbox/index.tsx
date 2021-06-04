@@ -15,12 +15,25 @@ const Input = styled.input``;
 type PropType = {
   name: string;
   label: string;
+  checked: boolean;
+  onChange: (checked: boolean) => void;
 };
 
-const Checkbox: FC<PropType> = ({ name, label }: PropType) => {
+const Checkbox: FC<PropType> = ({
+  name,
+  label,
+  checked,
+  onChange,
+}: PropType) => {
   return (
     <Wrapper>
-      <Input type="checkbox" id={name} name={name} />
+      <Input
+        type="checkbox"
+        id={name}
+        name={name}
+        checked={checked}
+        onChange={(e) => onChange(e.target.checked)}
+      />
       <Label htmlFor={name}>{label}</Label>
     </Wrapper>
   );

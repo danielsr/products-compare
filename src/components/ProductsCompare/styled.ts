@@ -9,6 +9,7 @@ export const CompareTable = styled.div`
 
 export const CompareTableColumn = styled.div`
   min-width: 225px;
+  max-width: 250px;
 `;
 
 export const CompareTableColumnHeader = styled.div`

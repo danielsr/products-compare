@@ -14,7 +14,14 @@ import ProductsSelect from "./ProductsSelect";
 import ProductColumn from "./ProductColumn";
 
 const ProductsComparison: FC = () => {
-  const { fetchProducts, products, features } = useProducts();
+  const {
+    fetchProducts,
+    products,
+    features,
+    selectedProductSkus,
+    setSelectedProductSkus,
+    selectedProducts,
+  } = useProducts();
 
   useEffect(() => {
     fetchProducts();
@@ -26,13 +33,17 @@ const ProductsComparison: FC = () => {
       <CompareTable>
         <CompareTableColumn>
           <CompareTableColumnHeader>
-            <ProductsSelect products={products} />
+            <ProductsSelect
+              products={products}
+              value={selectedProductSkus}
+              onChange={setSelectedProductSkus}
+            />
             <QualityLabel>Keurmerk</QualityLabel>
           </CompareTableColumnHeader>
           <FeatureLabels features={features} />
         </CompareTableColumn>
         <CompareTableColumns>
-          {products?.map((product) => (
+          {selectedProducts?.map((product) => (
             <ProductColumn
               key={product.sku}
               product={product}
