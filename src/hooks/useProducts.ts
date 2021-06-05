@@ -6,11 +6,11 @@ export function useProducts(): {
   products: Product.Product[];
   selectedProducts: Product.Product[];
   features: Product.Feature[];
-  fetchProducts: () => void;
   selectedProductSkus: string[];
+  isLoading: boolean;
+  fetchProducts: () => void;
   setSelectedProductSkus: (selectedProductSkus: string[]) => void;
   unselectProduct: (product: Product.Product) => void;
-  isLoading: boolean;
 } {
   const [products, setProducts] = useState<Product.Product[]>([]);
   const [selectedProductSkus, setSelectedProductSkus] = useState<string[]>([]);

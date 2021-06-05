@@ -3,16 +3,13 @@ import { hot } from "react-hot-loader";
 import { ThemeProvider } from "styled-components";
 import GlobalStyle from "./style/globalStyle";
 import { theme } from "style/theme";
-import Container from "./elements/Container";
-import ProductsCompare from "./components/ProductsCompare";
+import ProductsCompare from "pages/ProductsCompare";
 
 const App: React.FC = () => {
   return (
     <ThemeProvider theme={theme}>
       <GlobalStyle />
-      <Container>
-        <ProductsCompare />
-      </Container>
+      <ProductsCompare />
     </ThemeProvider>
   );
 };
