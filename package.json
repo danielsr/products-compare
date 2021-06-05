@@ -5,13 +5,13 @@
   "author": "Daniel Rodrigues",
   "license": "MIT",
   "scripts": {
-    "build": "npm run clean-dist && webpack --config=configs/webpack/prod.js",
+    "build": "npm run clean-dist && webpack --config=webpack.prod.js",
     "clean-dist": "rimraf dist/*",
     "lint": "eslint './src/**/*.{js,ts,tsx}' --quiet",
-    "start": "webpack serve --config=configs/webpack/dev.js",
+    "start": "webpack serve --config=webpack.dev.js",
     "proxy": "node ./proxy/index.js",
     "dev": "concurrently \"npm run proxy\" \"npm run start\"",
-    "test": "jest --watchAll --config=configs/jest/jest.json"
+    "test": "jest --watchAll"
   },
   "devDependencies": {
     "@babel/cli": "^7.14.3",

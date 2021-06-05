@@ -1,5 +1,5 @@
 import { useCallback, useMemo, useState } from "react";
-import featuresData from "../../data/features.json";
+import featuresData from "data/features.json";
 import productsService from "services/products";
 
 export function useProducts(): {

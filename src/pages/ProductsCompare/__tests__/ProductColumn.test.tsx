@@ -1,8 +1,8 @@
-import { render } from "../../../../configs/jest/testingLibraryUtils";
+import { render } from "unit-test/testUtils";
 import React from "react";
 import ProductColumn from "../ProductColumn";
-import { products } from "../../../../data/products.json";
-import features from "../../../../data/features.json";
+import { products } from "unit-test/mocks/products.json";
+import features from "unit-test/mocks/features.json";
 
 describe("ProductColumn", () => {
   it("renders", () => {

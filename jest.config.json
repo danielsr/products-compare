@@ -1,12 +1,12 @@
 {
-  "rootDir": "../../",
+  "rootDir": ".",
   "testEnvironment": "jsdom",
   "setupFilesAfterEnv": [
-    "<rootDir>/configs/jest/setupTestingLibrary.ts"
+    "<rootDir>/src/unit-test/setup.ts"
   ],
   "roots": ["<rootDir>/src/"],
   "moduleNameMapper": {
-    "\\.(svg)$": "<rootDir>/configs/jest/fileMock.ts"
+    "\\.(svg)$": "<rootDir>/src/unit-test/fileMock.ts"
   },
   "moduleFileExtensions": ["ts", "tsx", "js", "jsx"],
   "transformIgnorePatterns": ["/node_modules/"],
