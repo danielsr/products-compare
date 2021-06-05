@@ -11,7 +11,7 @@
     "start": "webpack serve --config=webpack.dev.js",
     "proxy": "node ./proxy/index.js",
     "dev": "concurrently \"npm run proxy\" \"npm run start\"",
-    "test": "jest --watchAll"
+    "test": "jest"
   },
   "devDependencies": {
     "@babel/cli": "^7.14.3",
@@ -22,6 +22,7 @@
     "@svgr/webpack": "^5.5.0",
     "@testing-library/jest-dom": "^5.13.0",
     "@testing-library/react": "^11.2.7",
+    "@testing-library/react-hooks": "^7.0.0",
     "@types/axios": "^0.14.0",
     "@types/jest": "^26.0.23",
     "@types/react": "^17.0.8",
@@ -39,6 +40,7 @@
     "eslint-plugin-react": "^7.23.2",
     "html-webpack-plugin": "^5.3.1",
     "jest": "^27.0.1",
+    "msw": "^0.29.0",
     "prettier": "^2.3.0",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",

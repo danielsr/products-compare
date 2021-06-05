@@ -64,6 +64,7 @@ const ProductColumn: FC<PropType> = ({
     <CompareTableColumn>
       <CompareTableColumnHeader>
         <DeleteIcon
+          data-testid="DeleteIcon"
           fill={theme.colors.primary}
           onClick={() => onDelete(product)}
         />
