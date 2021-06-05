@@ -14,6 +14,10 @@ module.exports = {
         use: ["babel-loader"],
         exclude: /node_modules/,
       },
+      {
+        test: /\.svg$/,
+        use: ["@svgr/webpack"],
+      },
     ],
   },
   plugins: [new HtmlWebpackPlugin({ template: "index.html.ejs" })],
