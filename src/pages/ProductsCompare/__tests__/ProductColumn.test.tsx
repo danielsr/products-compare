@@ -2,9 +2,11 @@ import React from "react";
 import { fireEvent, render, screen } from "unit-test/testUtils";
 import ProductColumn from "../ProductColumn";
 import { products } from "unit-test/mocks/products.json";
-import features from "unit-test/mocks/features.json";
+import { getFeaturesFromProducts } from "hooks/helpers";
 
 describe("ProductColumn", () => {
+  const features = getFeaturesFromProducts(products);
+
   it("renders product info", () => {
     const onDelete = jest.fn();
     render(
@@ -17,7 +19,7 @@ describe("ProductColumn", () => {
     expect(screen.getByText(products[0].name)).toBeInTheDocument();
     expect(screen.getByText(products[0].salePrice)).toBeInTheDocument();
     expect(screen.getByText(products[0].Toepassing)).toBeInTheDocument();
-    expect(screen.getByText(products[0].uom)).toBeInTheDocument();
+    expect(screen.getByText(products[0].Materiaal)).toBeInTheDocument();
   });
 
   it("calls onDelete when clicking delete icon", () => {

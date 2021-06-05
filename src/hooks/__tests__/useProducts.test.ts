@@ -16,7 +16,7 @@ describe("useProducts", () => {
   afterEach(() => server.resetHandlers());
   afterAll(() => server.close());
 
-  it("fetches products and handle selection", async () => {
+  it("fetches products and selects all", async () => {
     const { result, waitForNextUpdate } = renderHook(() => useProducts());
 
     act(() => {
@@ -25,15 +25,26 @@ describe("useProducts", () => {
 
     await waitForNextUpdate();
 
-    expect(result.current.products).toHaveLength(2);
-    expect(result.current.selectedProductSkus).toHaveLength(2);
+    expect(result.current.products).toHaveLength(4);
+    expect(result.current.selectedProductSkus).toHaveLength(4);
+    expect(result.current.selectedProducts).toHaveLength(4);
+  });
+
+  it("handles selection", async () => {
+    const { result, waitForNextUpdate } = renderHook(() => useProducts());
+
+    act(() => {
+      result.current.fetchProducts();
+    });
+
+    await waitForNextUpdate();
 
     act(() => {
       result.current.unselectProduct(data.products[0]);
     });
 
-    expect(result.current.selectedProductSkus).toHaveLength(1);
-    expect(result.current.selectedProducts).toHaveLength(1);
+    expect(result.current.selectedProductSkus).toHaveLength(3);
+    expect(result.current.selectedProducts).toHaveLength(3);
 
     act(() => {
       result.current.setSelectedProductSkus(
@@ -41,16 +52,36 @@ describe("useProducts", () => {
       );
     });
 
-    expect(result.current.selectedProductSkus).toHaveLength(2);
-    expect(result.current.selectedProducts).toHaveLength(2);
+    expect(result.current.selectedProductSkus).toHaveLength(4);
+    expect(result.current.selectedProducts).toHaveLength(4);
   });
 
-  it("returns features in alphabetical order", async () => {
-    const { result } = renderHook(() => useProducts());
+  it("sorts features alphabetically", async () => {
+    const { result, waitForNextUpdate } = renderHook(() => useProducts());
+
+    act(() => {
+      result.current.fetchProducts();
+    });
+
+    await waitForNextUpdate();
 
     expect(result.current.features[0].name).toBe("Hardheid");
     expect(
       result.current.features[result.current.features.length - 1].name,
-    ).toBe("uom");
+    ).toBe("stepQuantity");
+  });
+
+  it("highlights differences between features", async () => {
+    const { result, waitForNextUpdate } = renderHook(() => useProducts());
+
+    act(() => {
+      result.current.fetchProducts();
+    });
+
+    await waitForNextUpdate();
+
+    expect(
+      result.current.features.filter(({ highlight }) => highlight),
+    ).toHaveLength(3);
   });
 });
