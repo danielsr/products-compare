@@ -1,6 +1,6 @@
 import { useCallback, useMemo, useState } from "react";
-import featuresData from "data/features.json";
 import productsService from "services/products";
+import { getFeaturesFromProducts } from "./helpers";
 
 export function useProducts(): {
   products: Product.Product[];
@@ -17,8 +17,8 @@ export function useProducts(): {
   const [isLoading, setIsLoading] = useState<boolean>(false);
 
   const features = useMemo(() => {
-    return featuresData.sort((a, b) => (a.name > b.name ? 1 : -1));
-  }, [featuresData]);
+    return products.length === 0 ? [] : getFeaturesFromProducts(products);
+  }, [products]);
 
   const selectedProducts = useMemo(() => {
     return products?.filter(({ sku }) => selectedProductSkus.includes(sku));
