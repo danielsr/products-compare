@@ -28,6 +28,7 @@
     "@typescript-eslint/eslint-plugin": "^4.25.0",
     "@typescript-eslint/parser": "^4.25.0",
     "babel-loader": "^8.2.2",
+    "babel-plugin-module-resolver": "^4.1.0",
     "concurrently": "^6.2.0",
     "cors-anywhere": "^0.4.4",
     "eslint": "^7.27.0",

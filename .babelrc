@@ -5,7 +5,17 @@
     "@babel/preset-typescript"
   ],
   "plugins": [
-    "react-hot-loader/babel"
+    "react-hot-loader/babel",
+    [
+      "module-resolver",
+      {
+        "extensions": [
+          ".ts",
+          ".tsx"
+        ],
+        "root": ["./src"]
+      }
+    ]
   ],
   "env": {
     "production": {

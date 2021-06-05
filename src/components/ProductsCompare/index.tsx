@@ -1,5 +1,5 @@
 import React, { FC, useEffect } from "react";
-import { useProducts } from "../../hooks/useProducts";
+import { useProducts } from "hooks/useProducts";
 import {
   Wrapper,
   Title,

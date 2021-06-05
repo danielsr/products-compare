@@ -6,7 +6,7 @@ import {
   CompareTableColumn,
   CompareTableColumnHeader,
 } from "./styled";
-import DeleteIcon from "../../assets/images/delete.svg";
+import DeleteIcon from "assets/images/delete.svg";
 
 const Image = styled.img`
   height: 100px;

@@ -1,7 +1,7 @@
 import React, { FC } from "react";
 import styled from "styled-components";
 import { Product } from "../../types";
-import Checkbox from "../Checkbox";
+import Checkbox from "components/Checkbox";
 
 const Wrapper = styled.div`
   display: flex;
