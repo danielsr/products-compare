@@ -1,6 +1,5 @@
 import React, { FC } from "react";
 import styled from "styled-components";
-import { Product } from "../../types";
 import Checkbox from "components/Checkbox";
 
 const Wrapper = styled.div`
@@ -10,7 +9,7 @@ const Wrapper = styled.div`
 `;
 
 type PropType = {
-  products: Product[];
+  products: Product.Product[];
   value: string[];
   onChange: (value: string[]) => void;
 };

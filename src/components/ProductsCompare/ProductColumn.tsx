@@ -1,6 +1,5 @@
 import React, { FC } from "react";
 import styled from "styled-components";
-import { Product, ProductFeature } from "../../types";
 import {
   CompareTableCell,
   CompareTableColumn,
@@ -51,8 +50,8 @@ const Badge = styled.img`
 `;
 
 type PropType = {
-  product: Product;
-  features: ProductFeature[];
+  product: Product.Product;
+  features: Product.Feature[];
 };
 
 const ProductColumn: FC<PropType> = ({ product, features }: PropType) => {

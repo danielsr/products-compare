@@ -1,8 +1,7 @@
 import { AxiosResponse } from "axios";
 import axios from "./axiosConfig";
-import { Product } from "../types";
 
 export default {
-  getProducts: (): Promise<AxiosResponse<Product[]>> =>
+  getProducts: (): Promise<AxiosResponse<Product.Product[]>> =>
     axios.get("/products/all"),
 };

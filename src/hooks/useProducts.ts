@@ -1,16 +1,15 @@
 import { useCallback, useState } from "react";
 import data from "../../data/products.json";
-import { Product, ProductFeature } from "../types";
 
 export function useProducts(): {
-  products: Product[];
-  selectedProducts: Product[];
-  features: ProductFeature[];
+  products: Product.Product[];
+  selectedProducts: Product.Product[];
+  features: Product.Feature[];
   fetchProducts: () => void;
   selectedProductSkus: string[];
   setSelectedProductSkus: (selectedProductSkus: string[]) => void;
 } {
-  const [products, setProducts] = useState<Product[]>();
+  const [products, setProducts] = useState<Product.Product[]>([]);
   const [selectedProductSkus, setSelectedProductSkus] = useState<string[]>([]);
   const features = [
     { name: "Toepassing", highlight: true },

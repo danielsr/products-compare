@@ -1,9 +1,8 @@
 import React, { FC } from "react";
-import { ProductFeature } from "../../types";
 import { CompareTableCell } from "./styled";
 
 type PropType = {
-  features: ProductFeature[];
+  features: Product.Feature[];
 };
 
 const FeatureLabels: FC<PropType> = ({ features }: PropType) => {
