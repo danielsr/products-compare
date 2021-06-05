@@ -11,7 +11,7 @@
     "start": "webpack serve --config=configs/webpack/dev.js",
     "proxy": "node ./proxy/index.js",
     "dev": "concurrently \"npm run proxy\" \"npm run start\"",
-    "test": "jest --coverage --watchAll --config=configs/jest.json"
+    "test": "jest --watchAll --config=configs/jest/jest.json"
   },
   "devDependencies": {
     "@babel/cli": "^7.14.3",
@@ -20,6 +20,8 @@
     "@babel/preset-react": "^7.13.13",
     "@babel/preset-typescript": "^7.13.0",
     "@svgr/webpack": "^5.5.0",
+    "@testing-library/jest-dom": "^5.13.0",
+    "@testing-library/react": "^11.2.7",
     "@types/axios": "^0.14.0",
     "@types/jest": "^26.0.23",
     "@types/react": "^17.0.8",
