@@ -16,13 +16,15 @@ export function useProducts(): {
   const [selectedProductSkus, setSelectedProductSkus] = useState<string[]>([]);
   const [isLoading, setIsLoading] = useState<boolean>(false);
 
-  const features = useMemo(() => {
-    return products.length === 0 ? [] : getFeaturesFromProducts(products);
-  }, [products]);
-
   const selectedProducts = useMemo(() => {
     return products?.filter(({ sku }) => selectedProductSkus.includes(sku));
   }, [products, selectedProductSkus]);
+
+  const features = useMemo(() => {
+    return products.length === 0
+      ? []
+      : getFeaturesFromProducts(products, selectedProducts);
+  }, [products, selectedProducts]);
 
   const fetchProducts = useCallback(() => {
     const fetch = async () => {

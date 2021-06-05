@@ -23,8 +23,9 @@ const mapFeature = (
 
 export const getFeaturesFromProducts = (
   products: Product.Product[],
+  selectedProducts: Product.Product[],
 ): Product.Feature[] =>
   getProductFeatures(products)
     .filter(filterFeaturesToCompare)
     .sort(sortAlphabetically)
-    .map((feature) => mapFeature(feature, products));
+    .map((feature) => mapFeature(feature, selectedProducts));

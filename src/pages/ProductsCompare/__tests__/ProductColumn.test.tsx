@@ -5,7 +5,7 @@ import { products } from "unit-test/mocks/products.json";
 import { getFeaturesFromProducts } from "hooks/helpers";
 
 describe("ProductColumn", () => {
-  const features = getFeaturesFromProducts(products);
+  const features = getFeaturesFromProducts(products, products);
 
   it("renders product info", () => {
     const onDelete = jest.fn();
