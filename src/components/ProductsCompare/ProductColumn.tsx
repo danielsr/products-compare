@@ -6,6 +6,7 @@ import {
   CompareTableColumn,
   CompareTableColumnHeader,
 } from "./styled";
+import DeleteIcon from "../../assets/images/delete.svg";
 
 const Image = styled.img`
   height: 100px;
@@ -58,6 +59,7 @@ const ProductColumn: FC<PropType> = ({ product, features }: PropType) => {
   return (
     <CompareTableColumn>
       <CompareTableColumnHeader>
+        <DeleteIcon />
         <Image src={product.productImage} alt={product.name} />
         <Name>{product.name}</Name>
         <Price>
