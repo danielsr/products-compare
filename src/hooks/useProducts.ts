@@ -9,6 +9,7 @@ export function useProducts(): {
   fetchProducts: () => void;
   selectedProductSkus: string[];
   setSelectedProductSkus: (selectedProductSkus: string[]) => void;
+  unselectProduct: (product: Product.Product) => void;
 } {
   const [products, setProducts] = useState<Product.Product[]>([]);
   const [selectedProductSkus, setSelectedProductSkus] = useState<string[]>([]);
@@ -17,12 +18,21 @@ export function useProducts(): {
     return featuresData.sort((a, b) => (a.name > b.name ? 1 : -1));
   }, [featuresData]);
 
+  const selectedProducts = useMemo(() => {
+    return products?.filter(({ sku }) => selectedProductSkus.includes(sku));
+  }, [products, selectedProductSkus]);
+
   const fetchProducts = useCallback(() => {
     setProducts(productsData.products);
   }, [productsData, setProducts]);
 
-  const selectedProducts = products?.filter(({ sku }) =>
-    selectedProductSkus.includes(sku),
+  const unselectProduct = useCallback(
+    (product: Product.Product) => {
+      setSelectedProductSkus((skus) =>
+        skus.filter((sku) => sku !== product.sku),
+      );
+    },
+    [setSelectedProductSkus],
   );
 
   return {
@@ -32,5 +42,6 @@ export function useProducts(): {
     selectedProductSkus,
     setSelectedProductSkus,
     selectedProducts,
+    unselectProduct,
   };
 }

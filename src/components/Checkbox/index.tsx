@@ -8,6 +8,7 @@ const Wrapper = styled.div`
 
 const Label = styled.label`
   font-weight: 500;
+  cursor: pointer;
 `;
 
 const Input = styled.input``;

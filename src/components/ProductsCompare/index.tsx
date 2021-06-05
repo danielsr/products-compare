@@ -21,6 +21,7 @@ const ProductsComparison: FC = () => {
     selectedProductSkus,
     setSelectedProductSkus,
     selectedProducts,
+    unselectProduct,
   } = useProducts();
 
   useEffect(() => {
@@ -48,6 +49,7 @@ const ProductsComparison: FC = () => {
               key={product.sku}
               product={product}
               features={features}
+              onDelete={unselectProduct}
             />
           ))}
         </CompareTableColumns>

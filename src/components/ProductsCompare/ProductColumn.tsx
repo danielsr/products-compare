@@ -1,20 +1,18 @@
 import React, { FC } from "react";
-import styled from "styled-components";
-import {
-  CompareTableCell,
-  CompareTableColumn,
-  CompareTableColumnHeader,
-} from "./styled";
-import DeleteIcon from "assets/images/delete.svg";
+import styled, { useTheme } from "styled-components";
+import { CompareTableColumn, CompareTableColumnHeader } from "./styled";
+import SvgDelete from "assets/images/delete.svg";
+import ProductBadges from "./ProductBadges";
+import ProductFeatures from "./ProductFeatures";
 
 const Image = styled.img`
   height: 100px;
   object-fit: contain;
-  margin-top: 50px;
+  margin-top: 20px;
 `;
 
 const Name = styled.h4`
-  color: #0050bc;
+  color: ${({ theme }) => theme.colors.primary};
 `;
 
 const Price = styled.div`
@@ -28,37 +26,47 @@ const PriceValue = styled.span`
 `;
 
 const PricePer = styled.span`
-  color: #ccc;
+  color: ${({ theme }) => theme.colors.grayLight};
   font-size: 0.9rem;
-`;
-
-const Badges = styled.div`
-  display: flex;
-  gap: 5px;
-  padding-bottom: 5px;
 `;
 
 const Divider = styled.hr`
   width: 100%;
   height: 1px;
-  background-color: #eaeaea;
+  background-color: ${({ theme }) => theme.colors.grayLighter};
   border: none;
 `;
 
-const Badge = styled.img`
-  width: 25px;
+const DeleteIcon = styled(SvgDelete)`
+  margin-top: 20px;
+  align-self: flex-end;
+  cursor: pointer;
+
+  &:hover {
+    opacity: 0.7;
+  }
 `;
 
 type PropType = {
   product: Product.Product;
   features: Product.Feature[];
+  onDelete: (product: Product.Product) => void;
 };
 
-const ProductColumn: FC<PropType> = ({ product, features }: PropType) => {
+const ProductColumn: FC<PropType> = ({
+  product,
+  features,
+  onDelete,
+}: PropType) => {
+  const theme = useTheme();
+
   return (
     <CompareTableColumn>
       <CompareTableColumnHeader>
-        <DeleteIcon />
+        <DeleteIcon
+          fill={theme.colors.primary}
+          onClick={() => onDelete(product)}
+        />
         <Image src={product.productImage} alt={product.name} />
         <Name>{product.name}</Name>
         <Price>
@@ -66,21 +74,9 @@ const ProductColumn: FC<PropType> = ({ product, features }: PropType) => {
           <PricePer>per stuk / excl. btw</PricePer>
         </Price>
         <Divider />
-        <Badges>
-          {product.badges.split("|").map((badge, idx) => (
-            <Badge src={badge} key={`ProductBadge_${product.sku}_${idx}`} />
-          ))}
-        </Badges>
+        <ProductBadges product={product} />
       </CompareTableColumnHeader>
-      {features.map((feature, idx) => (
-        <CompareTableCell
-          highlight={feature.highlight}
-          bold
-          key={`ProductFeature_${product.sku}_${idx}`}
-        >
-          {product[feature.name]}
-        </CompareTableCell>
-      ))}
+      <ProductFeatures product={product} features={features} />
     </CompareTableColumn>
   );
 };

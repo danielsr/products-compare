@@ -2,8 +2,8 @@ import styled, { css } from "styled-components";
 
 export const CompareTable = styled.div`
   display: flex;
-  border-top: 1px solid #eaeaea;
-  border-bottom: 2px solid #0050bc;
+  border-top: 1px solid ${({ theme }) => theme.colors.grayLighter};
+  border-bottom: 2px solid ${({ theme }) => theme.colors.primary};
   padding-bottom: 20px;
 `;
 
@@ -30,7 +30,7 @@ export const CompareTableCell = styled.div<CompareTableCellPropType>`
   align-items: center;
   height: 30px;
   padding-left: 15px;
-  border-top: 1px solid #eaeaea;
+  border-top: 1px solid ${({ theme }) => theme.colors.grayLighter};
 
   ${({ bold }) =>
     bold &&
@@ -38,24 +38,24 @@ export const CompareTableCell = styled.div<CompareTableCellPropType>`
       font-weight: 500;
     `}
 
-  ${({ highlight }) =>
+  ${({ highlight, theme }) =>
     highlight &&
     css`
-      background-color: #eaeaea;
+      background-color: ${theme.colors.grayLighter};
     `}
 `;
 
 export const CompareTableColumns = styled.div`
   display: flex;
   overflow-x: auto;
-  border-left: 1px solid #eaeaea;
+  border-left: 1px solid ${({ theme }) => theme.colors.grayLighter};
 `;
 
 export const Wrapper = styled.div``;
 
 export const Title = styled.h1`
   font-size: 1.8rem;
-  color: #0050bc;
+  color: ${({ theme }) => theme.colors.primary};
 `;
 
 export const QualityLabel = styled(CompareTableCell)`
