@@ -8,6 +8,12 @@ const Wrapper = styled.div`
   gap: 10px;
 `;
 
+const Title = styled.h4`
+  font-size: 1.2rem;
+  margin: 20px 0 10px 0;
+  color: ${({ theme }) => theme.colors.primary};
+`;
+
 type PropType = {
   products: Product.Product[];
   value: string[];
@@ -21,6 +27,7 @@ const ProductsSelect: FC<PropType> = ({
 }: PropType) => {
   return (
     <Wrapper>
+      <Title>Je selectie</Title>
       {products?.map(({ name, sku }) => (
         <Checkbox
           key={`Checkbox_Product_${sku}`}

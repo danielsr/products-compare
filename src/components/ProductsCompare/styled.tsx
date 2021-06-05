@@ -3,8 +3,8 @@ import styled, { css } from "styled-components";
 export const CompareTable = styled.div`
   display: flex;
   border-top: 1px solid ${({ theme }) => theme.colors.grayLighter};
-  border-bottom: 2px solid ${({ theme }) => theme.colors.primary};
-  padding-bottom: 20px;
+  border-bottom: 4px solid ${({ theme }) => theme.colors.primary};
+  padding-bottom: 30px;
 `;
 
 export const CompareTableColumn = styled.div`
@@ -55,6 +55,7 @@ export const Wrapper = styled.div``;
 
 export const Title = styled.h1`
   font-size: 1.8rem;
+  margin: 20px 0;
   color: ${({ theme }) => theme.colors.primary};
 `;
 

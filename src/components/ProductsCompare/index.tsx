@@ -30,7 +30,7 @@ const ProductsComparison: FC = () => {
 
   return (
     <Wrapper>
-      <Title>Compare Products</Title>
+      <Title>4 producten vergelijken</Title>
       <CompareTable>
         <CompareTableColumn>
           <CompareTableColumnHeader>
