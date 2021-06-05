@@ -8,10 +8,12 @@ import {
   CompareTableColumn,
   CompareTableColumnHeader,
   QualityLabel,
+  Loading,
 } from "./styled";
 import FeatureLabels from "./FeatureLabels";
 import ProductsSelect from "./ProductsSelect";
 import ProductColumn from "./ProductColumn";
+import Spinner from "components/Spinner";
 
 const ProductsComparison: FC = () => {
   const {
@@ -22,6 +24,7 @@ const ProductsComparison: FC = () => {
     setSelectedProductSkus,
     selectedProducts,
     unselectProduct,
+    isLoading,
   } = useProducts();
 
   useEffect(() => {
@@ -32,27 +35,36 @@ const ProductsComparison: FC = () => {
     <Wrapper>
       <Title>4 producten vergelijken</Title>
       <CompareTable>
-        <CompareTableColumn>
-          <CompareTableColumnHeader>
-            <ProductsSelect
-              products={products}
-              value={selectedProductSkus}
-              onChange={setSelectedProductSkus}
-            />
-            <QualityLabel>Keurmerk</QualityLabel>
-          </CompareTableColumnHeader>
-          <FeatureLabels features={features} />
-        </CompareTableColumn>
-        <CompareTableColumns>
-          {selectedProducts?.map((product) => (
-            <ProductColumn
-              key={product.sku}
-              product={product}
-              features={features}
-              onDelete={unselectProduct}
-            />
-          ))}
-        </CompareTableColumns>
+        {isLoading && (
+          <Loading>
+            <Spinner />
+          </Loading>
+        )}
+        {!isLoading && products && (
+          <>
+            <CompareTableColumn>
+              <CompareTableColumnHeader>
+                <ProductsSelect
+                  products={products}
+                  value={selectedProductSkus}
+                  onChange={setSelectedProductSkus}
+                />
+                <QualityLabel>Keurmerk</QualityLabel>
+              </CompareTableColumnHeader>
+              <FeatureLabels features={features} />
+            </CompareTableColumn>
+            <CompareTableColumns>
+              {selectedProducts?.map((product) => (
+                <ProductColumn
+                  key={product.sku}
+                  product={product}
+                  features={features}
+                  onDelete={unselectProduct}
+                />
+              ))}
+            </CompareTableColumns>
+          </>
+        )}
       </CompareTable>
     </Wrapper>
   );

@@ -63,3 +63,11 @@ export const QualityLabel = styled(CompareTableCell)`
   padding-left: unset;
   border: none;
 `;
+
+export const Loading = styled.div`
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 50vh;
+`;

@@ -1,6 +1,6 @@
 import { useCallback, useMemo, useState } from "react";
-import productsData from "../../data/products.json";
 import featuresData from "../../data/features.json";
+import productsService from "services/products";
 
 export function useProducts(): {
   products: Product.Product[];
@@ -10,9 +10,11 @@ export function useProducts(): {
   selectedProductSkus: string[];
   setSelectedProductSkus: (selectedProductSkus: string[]) => void;
   unselectProduct: (product: Product.Product) => void;
+  isLoading: boolean;
 } {
   const [products, setProducts] = useState<Product.Product[]>([]);
   const [selectedProductSkus, setSelectedProductSkus] = useState<string[]>([]);
+  const [isLoading, setIsLoading] = useState<boolean>(false);
 
   const features = useMemo(() => {
     return featuresData.sort((a, b) => (a.name > b.name ? 1 : -1));
@@ -23,8 +25,18 @@ export function useProducts(): {
   }, [products, selectedProductSkus]);
 
   const fetchProducts = useCallback(() => {
-    setProducts(productsData.products);
-  }, [productsData, setProducts]);
+    const fetch = async () => {
+      try {
+        setIsLoading(true);
+        const { data } = await productsService.getProducts();
+        setProducts(data.products);
+        setSelectedProductSkus(data.products.map(({ sku }) => sku));
+      } finally {
+        setIsLoading(false);
+      }
+    };
+    fetch();
+  }, [setProducts, setSelectedProductSkus, setIsLoading]);
 
   const unselectProduct = useCallback(
     (product: Product.Product) => {
@@ -43,5 +55,6 @@ export function useProducts(): {
     setSelectedProductSkus,
     selectedProducts,
     unselectProduct,
+    isLoading,
   };
 }
