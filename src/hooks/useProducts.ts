@@ -1,5 +1,6 @@
-import { useCallback, useState } from "react";
-import data from "../../data/products.json";
+import { useCallback, useMemo, useState } from "react";
+import productsData from "../../data/products.json";
+import featuresData from "../../data/features.json";
 
 export function useProducts(): {
   products: Product.Product[];
@@ -11,22 +12,14 @@ export function useProducts(): {
 } {
   const [products, setProducts] = useState<Product.Product[]>([]);
   const [selectedProductSkus, setSelectedProductSkus] = useState<string[]>([]);
-  const features = [
-    { name: "Toepassing", highlight: true },
-    { name: "Hardheid", highlight: false },
-    { name: "stepQuantity", highlight: false },
-    { name: "uom", highlight: false },
-    { name: "Kleur", highlight: true },
-    { name: "Temperatuurgebied", highlight: false },
-    { name: "Materiaal", highlight: false },
-    { name: "Snoerdikte", highlight: false },
-    { name: "Inwendige diameter", highlight: false },
-    { name: "Maat volgens AS568", highlight: false },
-  ].sort((a, b) => (a.name > b.name ? 1 : -1));
+
+  const features = useMemo(() => {
+    return featuresData.sort((a, b) => (a.name > b.name ? 1 : -1));
+  }, [featuresData]);
 
   const fetchProducts = useCallback(() => {
-    setProducts(data.products);
-  }, [data, setProducts]);
+    setProducts(productsData.products);
+  }, [productsData, setProducts]);
 
   const selectedProducts = products?.filter(({ sku }) =>
     selectedProductSkus.includes(sku),
