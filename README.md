@@ -28,7 +28,7 @@
 
 ### components
 
-- Components that can be shared througout the app
+- Components that can be shared throughout the app
 - Usually stateless components
 
 ### elements
