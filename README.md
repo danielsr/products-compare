@@ -14,8 +14,8 @@
 - Lint (eslint + prettier)
 - Functional components
 - Functional programming, example [src/hooks/helpers.ts](src/hooks/helpers.ts)
-- React hooks, example `hooks/useProducts.ts`
-- Unit tests with React testing library (including [Mock Service Worker](https://mswjs.io/)), example: `src/hooks/__tests__/useProducts.test.ts`
+- React hooks, example [src/hooks/useProducts.ts](src/hooks/useProducts.ts)
+- Unit tests with React testing library (including [Mock Service Worker](https://mswjs.io/)), example: [src/hooks/__tests__/useProducts.test.ts](src/hooks/__tests__/useProducts.test.ts)
 - Global state and router not required
 
 ## Folter structure
@@ -53,7 +53,7 @@
 - Checkbox component with custom style
 - More unit tests
 - e2e test with Cypress
-- The useProducts hook is candidate to be moved to `pages/ProductsCompare`, since it has specific implementation, like feature highlighting. Fetching and product selection could still be shared though. A possible solution here would be a composition, creating a useProductsCompare to implement what is specific.
+- The useProducts hook is candidate to be moved to [src/pages/ProductsCompare](src/pages/ProductsCompare), since it has specific implementation, like feature highlighting. Fetching and product selection could still be shared though. A possible solution here would be a composition, creating a useProductsCompare to implement what is specific.
 
 ## Dependencies
 
