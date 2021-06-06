@@ -13,7 +13,7 @@
 - Custom setup (webpack + babel + typescript)
 - Lint (eslint + prettier)
 - Functional components
-- Functional programming, example [hooks/helpers.ts](hooks/helpers.ts)
+- Functional programming, example [src/hooks/helpers.ts](hooks/helpers.ts)
 - React hooks, example `hooks/useProducts.ts`
 - Unit tests with React testing library (including [Mock Service Worker](https://mswjs.io/)), example: `src/hooks/__tests__/useProducts.test.ts`
 - Global state and router not required
