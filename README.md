@@ -10,32 +10,59 @@
 
 ## Architectural choices
 
-- Setup made from scratch (webpack + babel + typescript)
+- Custom setup (webpack + babel + typescript)
+- Lint (eslint + prettier)
 - Functional components
 - Functional programming, example `hooks/helpers.ts`
 - React hooks, example `hooks/useProducts.ts`
-- React testing library (including [Mock Service Worker](https://mswjs.io/)), example: `src/hooks/__tests__/useProducts.test.ts`
+- Unit tests with React testing library (including [Mock Service Worker](https://mswjs.io/)), example: `src/hooks/__tests__/useProducts.test.ts`
 - Global state and router not required
 
-## Components pattern
+## Folter structure
 
-- pages
-- components
-- elements
+### pages
 
-## Proxy
+- Like containers
+- Connected to hooks to use state, services...
+- Composed by components which can be exclusive (same folder) or shared (components folder)
 
-- To handle CORS, using cors-anywhere
+### components
+
+- Components that can be shared througout the app
+- Usually stateless components
+
+### elements
+
+- Shared styled components used to compose components and pages
+
+### hooks
+
+- Hooks to be shared.
+
+### services
+
+- Place for api resources.
+
+### style
+
+- Global style and theme
+
+## Possible improvements
+
+- Error handling (fetch)
+- Checkbox component with custom style
+- More unit tests
+- e2e test with Cypress
+- The useProducts hook is candidate to be moved to `pages/ProductsCompare`, since it has specific implementation, like feature highlighting. Fetching and product selection could still be shared though. A possible solution here would be a composition, creating a useProductsCompare to implement what is specific.
 
 ## Dependencies
 
 - styled-components
 - axios
 
-## Possible improvements
+## Proxy
 
-- Error handling (fetch)
-
+- To handle CORS, using cors-anywhere
 
 ##  Remarks
 
