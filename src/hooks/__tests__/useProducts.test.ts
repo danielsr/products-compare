@@ -71,7 +71,7 @@ describe("useProducts", () => {
     ).toBe("stepQuantity");
   });
 
-  it("highlights differences between features", async () => {
+  it("highlights differences between features for selected products", async () => {
     const { result, waitForNextUpdate } = renderHook(() => useProducts());
 
     act(() => {
@@ -83,5 +83,13 @@ describe("useProducts", () => {
     expect(
       result.current.features.filter(({ highlight }) => highlight),
     ).toHaveLength(3);
+
+    act(() => {
+      result.current.setSelectedProductSkus(["11545A", "115576"]);
+    });
+
+    expect(
+      result.current.features.filter(({ highlight }) => highlight),
+    ).toHaveLength(2);
   });
 });
