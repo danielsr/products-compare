@@ -3,15 +3,13 @@ import { featuresNotToCompare } from "config/features";
 const getProductFeatures = (products: Product.Product[]): string[] =>
   Object.keys(products[0]);
 
-const filterFeaturesToCompare = (key: string): boolean =>
-  !featuresNotToCompare.includes(key);
-
-const sortAlphabetically = (a: string, b: string): number => (a > b ? 1 : -1);
+const isFeatureToCompare = (feature: string): boolean =>
+  !featuresNotToCompare.includes(feature);
 
 const isFeatureHighlighted = (
   feature: string,
-  products: Product.Product[],
-): boolean => new Set(products.map((prod) => prod[feature])).size > 1;
+  selectedProducts: Product.Product[],
+): boolean => new Set(selectedProducts.map((prod) => prod[feature])).size > 1;
 
 const mapFeature = (
   feature: string,
@@ -26,6 +24,6 @@ export const getFeaturesFromProducts = (
   selectedProducts: Product.Product[],
 ): Product.Feature[] =>
   getProductFeatures(products)
-    .filter(filterFeaturesToCompare)
-    .sort(sortAlphabetically)
+    .filter(isFeatureToCompare)
+    .sort()
     .map((feature) => mapFeature(feature, selectedProducts));
