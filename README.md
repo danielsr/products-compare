@@ -54,6 +54,7 @@
 - More unit tests
 - e2e test with Cypress
 - The useProducts hook is candidate to be moved to [src/pages/ProductsCompare](src/pages/ProductsCompare), since it has specific implementation, like feature highlighting. Fetching and product selection could still be shared though. A possible solution here would be a composition, creating a useProductsCompare to implement what is specific.
+- Browser compatibility
 
 ## Dependencies
 
