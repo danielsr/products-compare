@@ -18,7 +18,7 @@
 - Unit tests with React testing library (including [Mock Service Worker](https://mswjs.io/)), example: [src/hooks/__tests__/useProducts.test.ts](src/hooks/__tests__/useProducts.test.ts)
 - Global state and router not required
 
-## Folter structure
+## Folder structure
 
 ### pages
 
